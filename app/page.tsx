@@ -23,6 +23,7 @@ export default function Home() {
     students: "",
     painPoints: [] as string[],
     otherPain: "",
+    revenue: "",
     email: "",
     phone: "",
   });
@@ -402,6 +403,25 @@ export default function Home() {
                   {formData.painPoints.length === 0 && (
                     <input type="hidden" name="painPointsRequired" required />
                   )}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">
+                    Annual business revenue *
+                  </label>
+                  <select
+                    required
+                    name="revenue"
+                    value={formData.revenue}
+                    onChange={handleChange}
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1B2B4B] bg-white"
+                  >
+                    <option value="">Select one</option>
+                    <option value="under-100k">Under $100K</option>
+                    <option value="100k-500k">$100K – $500K</option>
+                    <option value="500k-1m">$500K – $1M</option>
+                    <option value="over-1m">Over $1M</option>
+                  </select>
                 </div>
 
                 <div>

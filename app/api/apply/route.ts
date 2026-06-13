@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, business, location, students, painPoints, otherPain, email, phone } = body;
+    const { name, business, location, students, painPoints, otherPain, revenue, email, phone } = body;
 
-    if (!name || !business || !location || !students || !painPoints || !email) {
+    if (!name || !business || !location || !students || !painPoints || !revenue || !email) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
@@ -23,6 +23,7 @@ Name: ${name}
 Business: ${business}
 Location: ${location}
 Active Students: ${students}
+Annual Revenue: ${revenue}
 Email: ${email}
 Phone: ${phone || "Not provided"}
 
