@@ -3,12 +3,26 @@
 import { useState } from "react";
 
 export default function Home() {
+  const PAIN_POINTS = [
+    "Following up with leads takes too long — or doesn't happen",
+    "Scheduling is a constant back-and-forth nightmare",
+    "Student intake is manual and inconsistent",
+    "I'm writing the same emails and texts over and over",
+    "Inactive families fall off and I don't re-engage them",
+    "I have no visibility into which marketing is working",
+    "Session notes and parent updates eat up tutor time",
+    "I can't step away without the business suffering",
+    "Payments and billing are a headache to track",
+    "I'm using too many disconnected tools",
+  ];
+
   const [formData, setFormData] = useState({
     name: "",
     business: "",
     location: "",
     students: "",
-    pain: "",
+    painPoints: [] as string[],
+    otherPain: "",
     email: "",
     phone: "",
   });
@@ -22,6 +36,15 @@ export default function Home() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleCheckbox = (point: string) => {
+    const current = formData.painPoints;
+    if (current.includes(point)) {
+      setFormData({ ...formData, painPoints: current.filter((p) => p !== point) });
+    } else if (current.length < 3) {
+      setFormData({ ...formData, painPoints: [...current, point] });
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
@@ -31,7 +54,10 @@ export default function Home() {
       const res = await fetch("/api/apply", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+        ...formData,
+        painPoints: formData.painPoints.join(" | "),
+      }),
       });
 
       if (!res.ok) throw new Error("Submission failed");
@@ -323,16 +349,52 @@ export default function Home() {
                 </div>
 
                 <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    What are your biggest pain points? <span className="text-[#D7190B]">Pick up to 3</span> *
+                  </label>
+                  <p className="text-xs text-gray-400 mb-3">Selected: {formData.painPoints.length}/3</p>
+                  <div className="space-y-2">
+                    {PAIN_POINTS.map((point) => {
+                      const selected = formData.painPoints.includes(point);
+                      const maxed = formData.painPoints.length >= 3 && !selected;
+                      return (
+                        <label
+                          key={point}
+                          className={`flex items-start gap-3 p-3 rounded-lg border cursor-pointer transition-colors ${
+                            selected
+                              ? "border-[#1B2B4B] bg-[#1B2B4B]/5"
+                              : maxed
+                              ? "border-gray-200 opacity-40 cursor-not-allowed"
+                              : "border-gray-200 hover:border-[#1B2B4B]/40"
+                          }`}
+                        >
+                          <input
+                            type="checkbox"
+                            checked={selected}
+                            disabled={maxed}
+                            onChange={() => handleCheckbox(point)}
+                            className="mt-0.5 accent-[#1B2B4B] shrink-0"
+                          />
+                          <span className="text-sm text-gray-700">{point}</span>
+                        </label>
+                      );
+                    })}
+                  </div>
+                  {formData.painPoints.length === 0 && (
+                    <input type="hidden" name="painPointsRequired" required />
+                  )}
+                </div>
+
+                <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-1">
-                    What&apos;s your biggest operational headache right now? *
+                    Anything else you want me to know? <span className="text-gray-400 font-normal">(optional)</span>
                   </label>
                   <textarea
-                    required
-                    name="pain"
-                    value={formData.pain}
+                    name="otherPain"
+                    value={formData.otherPain}
                     onChange={handleChange}
-                    rows={4}
-                    placeholder="E.g. following up with leads, scheduling, session notes, tracking payments..."
+                    rows={3}
+                    placeholder="Any context that would help me prepare for our conversation..."
                     className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#1B2B4B] resize-none"
                   />
                 </div>

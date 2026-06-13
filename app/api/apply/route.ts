@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, business, location, students, pain, email, phone } = body;
+    const { name, business, location, students, painPoints, otherPain, email, phone } = body;
 
-    if (!name || !business || !location || !students || !pain || !email) {
+    if (!name || !business || !location || !students || !painPoints || !email) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
@@ -26,8 +26,11 @@ Active Students: ${students}
 Email: ${email}
 Phone: ${phone || "Not provided"}
 
-Biggest Operational Headache:
-${pain}
+Top Pain Points:
+${painPoints.split(" | ").map((p: string, i: number) => `  ${i + 1}. ${p}`).join("\n")}
+
+Additional Notes:
+${otherPain || "None"}
 
 —
 Submitted via consulting validation page
