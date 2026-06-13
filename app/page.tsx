@@ -52,11 +52,10 @@ export default function Home() {
             For Tutoring Business Owners
           </p>
           <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-6">
-            Your Tutoring Business Should Run Without You in the Room
+            AI-Powered Systems That Run Your Tutoring Business — So You Don&apos;t Have To
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
-            I built a custom software system for my tutoring business — automated intake, scheduling, follow-up, billing, and more. 
-            Now I&apos;m building it for a few others. Here&apos;s how to apply.
+            I build custom software and AI automations for tutoring businesses — the kind that handle follow-ups, intake, scheduling, and communications without you lifting a finger. I built it for my own business first. Now I&apos;m doing it for others.
           </p>
           <a
             href="#apply"
@@ -67,20 +66,38 @@ export default function Home() {
         </div>
       </section>
 
+      {/* AI Features Banner */}
+      <section className="bg-[#FFC233] px-6 py-5">
+        <div className="max-w-3xl mx-auto flex flex-wrap justify-center gap-6 text-[#1B2B4B] font-semibold text-sm text-center">
+          {[
+            "🤖 AI-Powered Lead Follow-Up",
+            "📅 Automated Scheduling",
+            "📋 Smart Student Intake",
+            "💬 AI-Drafted Session Notes",
+            "📈 Revenue Growth Automations",
+          ].map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
+      </section>
+
       {/* Pain points */}
       <section className="px-6 py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-[#1B2B4B] mb-8 text-center">
-            Sound familiar?
+          <h2 className="text-2xl md:text-3xl font-bold text-[#1B2B4B] mb-3 text-center">
+            Your competitors are already using AI.
           </h2>
+          <p className="text-gray-500 text-center mb-10 max-w-xl mx-auto">
+            Most tutoring businesses are still doing everything manually. That gap is an opportunity — if you move first.
+          </p>
           <div className="grid md:grid-cols-2 gap-6">
             {[
-              "You're spending hours each week on admin that has nothing to do with teaching",
-              "Leads fall through the cracks because follow-up is manual and inconsistent",
-              "You're using 4-5 different tools that don't talk to each other",
-              "You can't take a week off without the business grinding to a halt",
-              "Scheduling, intake forms, and session notes are a constant headache",
-              "You built a great tutoring program — but running the business is exhausting",
+              "Leads go cold because follow-up is slow and inconsistent",
+              "You're writing the same emails and texts over and over",
+              "Scheduling takes hours of back-and-forth every week",
+              "Student intake is still a mess of forms, calls, and PDFs",
+              "You have no idea which marketing is actually driving revenue",
+              "You can't scale without hiring — because humans are handling what AI could do",
             ].map((pain, i) => (
               <div key={i} className="flex items-start gap-3 bg-white p-5 rounded-lg shadow-sm">
                 <span className="text-[#D7190B] text-xl mt-0.5">✗</span>
@@ -91,34 +108,83 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Proof / Story */}
+      {/* What AI can do */}
       <section className="px-6 py-16">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#1B2B4B] mb-3 text-center">
+            What AI actually does for a tutoring business
+          </h2>
+          <p className="text-gray-500 text-center mb-10 max-w-xl mx-auto">
+            Not hype. Real automations I&apos;ve already built and run in my own business.
+          </p>
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                icon: "🤖",
+                title: "AI Lead Follow-Up",
+                desc: "New inquiry comes in → AI sends a personalized response within minutes, qualifies the lead, and books the consultation. No human required.",
+              },
+              {
+                icon: "📋",
+                title: "Automated Student Intake",
+                desc: "Students complete intake online → data flows directly into your system, tutors get briefed automatically, nothing falls through the cracks.",
+              },
+              {
+                icon: "📝",
+                title: "AI Session Notes & Emails",
+                desc: "After every session, AI drafts a progress update email to parents. Tutors review and send in 30 seconds instead of 10 minutes.",
+              },
+              {
+                icon: "🔔",
+                title: "Smart Reminders & Re-Engagement",
+                desc: "Inactive families get automatically re-engaged. Students approaching test dates get personalized outreach. All on autopilot.",
+              },
+              {
+                icon: "📅",
+                title: "Scheduling Without the Back-and-Forth",
+                desc: "Students and parents book directly into your calendar. Reminders go out automatically. No more scheduling by text.",
+              },
+              {
+                icon: "📈",
+                title: "Revenue Reporting That Actually Makes Sense",
+                desc: "See exactly where your revenue is coming from, which programs are growing, and where you're leaving money on the table.",
+              },
+            ].map(({ icon, title, desc }) => (
+              <div key={title} className="border border-gray-200 rounded-xl p-6 hover:shadow-md transition-shadow">
+                <div className="text-3xl mb-3">{icon}</div>
+                <h3 className="text-lg font-bold text-[#1B2B4B] mb-2">{title}</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Proof / Story */}
+      <section className="px-6 py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto">
           <div className="bg-[#1B2B4B] text-white rounded-2xl p-8 md:p-12">
             <p className="text-[#FFC233] text-sm font-semibold uppercase tracking-widest mb-4">
-              My Story
+              Proof of Concept
             </p>
             <h2 className="text-2xl md:text-3xl font-bold mb-6">
               I built it for my own business first.
             </h2>
             <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
               <p>
-                I own nGenius Prep — an ACT test prep and tutoring company in Madison, Alabama. 
-                A couple years ago, I was drowning in the same admin chaos every tutoring business deals with.
+                I own nGenius Prep — an ACT test prep and tutoring company in Alabama. A couple years ago, I was drowning in the same admin chaos every tutoring business owner knows.
               </p>
               <p>
-                So I built a custom platform from scratch. It handles student intake, CRM, scheduling, 
-                automated follow-up, session notes, tutor communications, billing integrations, and more. 
-                All in one place, built exactly for how a tutoring business actually works.
+                So I built a custom AI-powered platform from scratch. It handles student intake, CRM, automated follow-up, AI-drafted session notes, tutor communications, billing, scheduling, and more. All connected. All automated.
               </p>
               <p>
-                Now the business runs without me managing every detail. I want to build the same thing for a small number of other tutoring businesses.
+                The business now runs without me managing every detail. I want to build the same thing — tailored to how <em>your</em> business actually works — for a small number of other tutoring businesses.
               </p>
             </div>
             <div className="mt-8 grid grid-cols-3 gap-6 text-center border-t border-gray-600 pt-8">
               {[
                 { stat: "300+", label: "Students tracked" },
-                { stat: "12+", label: "Automations running" },
+                { stat: "12+", label: "AI automations running" },
                 { stat: "0", label: "Spreadsheets" },
               ].map(({ stat, label }) => (
                 <div key={label}>
@@ -132,30 +198,30 @@ export default function Home() {
       </section>
 
       {/* What you get */}
-      <section className="px-6 py-16 bg-gray-50">
+      <section className="px-6 py-16">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-[#1B2B4B] mb-3 text-center">
             What the strategy session looks like
           </h2>
           <p className="text-gray-500 text-center mb-10">
-            No pitch. No sales pressure. Just an honest look at your business.
+            No pitch. No pressure. An honest look at where AI can move the needle for your business.
           </p>
           <div className="space-y-6">
             {[
               {
                 num: "01",
-                title: "Map your current workflow",
-                desc: "Where are you losing time? Where are leads slipping through? We dig into the real operational picture.",
+                title: "Audit your current operations",
+                desc: "Where are you losing time? Where are leads slipping? We map the real workflow — manual steps, bottlenecks, and the tools you're duct-taping together.",
               },
               {
                 num: "02",
-                title: "Identify the highest-leverage fixes",
-                desc: "Not everything needs custom software. We figure out what would actually move the needle for your business.",
+                title: "Identify your highest-leverage AI wins",
+                desc: "Not everything needs to be automated. We find the 2-3 places where AI would have the biggest impact on your time and your revenue.",
               },
               {
                 num: "03",
-                title: "Walk away with a clear plan",
-                desc: "Whether or not we work together, you'll leave with actionable clarity on what to fix first.",
+                title: "Walk away with a clear roadmap",
+                desc: "Whether or not we work together, you'll leave knowing exactly what to build, what to automate, and what to stop doing manually.",
               },
             ].map(({ num, title, desc }) => (
               <div key={num} className="flex gap-6 items-start">
@@ -173,7 +239,7 @@ export default function Home() {
       </section>
 
       {/* Application Form */}
-      <section id="apply" className="px-6 py-16">
+      <section id="apply" className="px-6 py-16 bg-gray-50">
         <div className="max-w-2xl mx-auto">
           {submitted ? (
             <div className="text-center py-16">
@@ -188,12 +254,12 @@ export default function Home() {
           ) : (
             <>
               <h2 className="text-2xl md:text-3xl font-bold text-[#1B2B4B] mb-3 text-center">
-                Apply for a Free Strategy Session
+                Apply for a Free AI Strategy Session
               </h2>
               <p className="text-gray-500 text-center mb-10">
-                Takes 2 minutes. I review every application personally.
+                Takes 2 minutes. I review every application personally. No spam, no pressure.
               </p>
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5 bg-white p-8 rounded-2xl shadow-sm">
                 <div className="grid md:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-1">
@@ -322,8 +388,8 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-100 px-6 py-8 text-center text-gray-400 text-sm">
-        <p>Questions? Email <a href="mailto:kyle@ngeniusprep.com" className="underline">kyle@ngeniusprep.com</a></p>
+      <footer className="bg-[#1B2B4B] px-6 py-8 text-center text-gray-400 text-sm">
+        <p>Questions? Email <a href="mailto:kyle@ngeniusprep.com" className="underline text-gray-300">kyle@ngeniusprep.com</a></p>
       </footer>
     </main>
   );
