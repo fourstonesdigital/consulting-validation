@@ -83,12 +83,26 @@ export default function Home() {
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">
             I build custom software and AI automations for tutoring businesses — the kind that handle follow-ups, intake, scheduling, and communications without you lifting a finger. I built it for my own business first. Now I&apos;m doing it for others.
           </p>
-          <a
-            href="#apply"
-            className="inline-block bg-[#D7190B] hover:bg-red-700 text-white font-bold px-8 py-4 rounded-lg text-lg transition-colors"
-          >
-            Apply for a Free Strategy Session →
-          </a>
+          <div className="inline-flex flex-col items-center gap-3">
+            <a
+              href="#apply"
+              className="inline-block bg-[#D7190B] hover:bg-red-700 text-white font-bold px-8 py-4 rounded-lg text-lg transition-colors"
+            >
+              Apply for a Free Strategy Session →
+            </a>
+            <p className="text-[#FFC233] text-sm font-semibold">
+              ⚠️ Only taking 3 businesses. No upfront cost.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Scarcity Bar */}
+      <section className="bg-[#D7190B] px-6 py-4">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-white font-bold text-base md:text-lg">
+            🔒 I&apos;m only taking on <span className="underline">3 businesses</span> for this. No upfront cost. You pay when you see results.
+          </p>
         </div>
       </section>
 
@@ -279,12 +293,17 @@ export default function Home() {
             </div>
           ) : (
             <>
-              <h2 className="text-2xl md:text-3xl font-bold text-[#1B2B4B] mb-3 text-center">
-                Apply for a Free AI Strategy Session
-              </h2>
-              <p className="text-gray-500 text-center mb-10">
-                Takes 2 minutes. I review every application personally. No spam, no pressure.
-              </p>
+              <div className="text-center mb-8">
+                <span className="inline-block bg-[#D7190B] text-white text-sm font-bold px-4 py-2 rounded-full mb-4">
+                  Only 3 spots available
+                </span>
+                <h2 className="text-2xl md:text-3xl font-bold text-[#1B2B4B] mb-3">
+                  Apply for a Free AI Strategy Session
+                </h2>
+                <p className="text-gray-500">
+                  No upfront cost. Takes 2 minutes. I review every application personally.
+                </p>
+              </div>
               <form onSubmit={handleSubmit} className="space-y-5 bg-white p-8 rounded-2xl shadow-sm">
                 <div className="grid md:grid-cols-2 gap-5">
                   <div>
